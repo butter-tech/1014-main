@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foglalás</title>
+</head>
+<body>
+    <div>
+        <h2>Foglalás</h2>
+        <form action="/book" method="POST">
+            <div>
+                <label for="name">Név:</label>
+                <input type="text" id="name" name="name" value="<%= data.name %>" required>
+                <% errors.forEach(error => { if (error.param === 'name') { %>
+                    <div style="color: red;"><%= error.msg %></div>
+                <% } }) %>
+            </div>
+            <div>
+                <label for="email">E-mail cím:</label>
+                <input type="email" id="email" name="email" value="<%= data.email %>" required>
+                <% errors.forEach(error => { if (error.param === 'email') { %>
+                    <div style="color: red;"><%= error.msg %></div>
+                <% } }) %>
+            </div>
+            <div>
+                <label for="date">Dátum és időpont:</label>
+                <input type="datetime-local" id="date" name="date" value="<%= data.date %>" required>
+                <% errors.forEach(error => { if (error.param === 'date') { %>
+                    <div style="color: red;"><%= error.msg %></div>
+                <% } }) %>
+            </div>
+            <div>
+                <label for="guests">Vendégek száma:</label>
+                <input type="number" id="guests" name="guests" min="1" max="10" value="<%= data.guests %>" required>
+                <% errors.forEach(error => { if (error.param === 'guests') { %>
+                    <div style="color: red;"><%= error.msg %></div>
+                <% } }) %>
+            </div>
+            <button type="submit">Foglalás</button>
+        </form>
+    </div>
+</body>
+</html>
